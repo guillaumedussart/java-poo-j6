@@ -15,7 +15,7 @@ import fr.diginamic.recensement.entites.Ville;
 public class RecherchePopulationVilleService extends MenuService {
 
 	@Override
-	public void traiter(Recensement rec, Scanner scanner) {
+	public Throwable traiter(Recensement rec, Scanner scanner) {
 
 		System.out.println("Quel est le nom de la ville recherchée ? ");
 		String choix = scanner.nextLine();
@@ -27,6 +27,7 @@ public class RecherchePopulationVilleService extends MenuService {
 				System.out.println(ville);
 			}
 		}
-	}
+        return null;
+    }
 
 }

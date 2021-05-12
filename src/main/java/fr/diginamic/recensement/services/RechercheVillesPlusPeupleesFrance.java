@@ -17,7 +17,7 @@ import fr.diginamic.recensement.services.comparators.EnsemblePopComparateur;
 public class RechercheVillesPlusPeupleesFrance extends MenuService {
 
 	@Override
-	public void traiter(Recensement recensement, Scanner scanner) {
+	public Throwable traiter(Recensement recensement, Scanner scanner) {
 
 		System.out.println("Veuillez saisir un nombre de villes:");
 		String nbVillesStr = scanner.nextLine();
@@ -30,6 +30,7 @@ public class RechercheVillesPlusPeupleesFrance extends MenuService {
 			Ville ville = villes.get(i);
 			System.out.println(ville.getNom() + " : " + ville.getPopulation() + " habitants.");
 		}
-	}
+        return null;
+    }
 
 }

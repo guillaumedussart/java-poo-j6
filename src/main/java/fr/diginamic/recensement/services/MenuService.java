@@ -15,9 +15,9 @@ public abstract class MenuService {
 	/**
 	 * Méthode abstraite de traitement que doivent posséder toutes les méthodes de
 	 * services
-	 * 
-	 * @param lignes  lignes du fichier
+	 *  @param lignes  lignes du fichier
 	 * @param scanner scanner
-	 */
-	public abstract void traiter(Recensement recensement, Scanner scanner);
+     * @return
+     */
+	public abstract Throwable traiter(Recensement recensement, Scanner scanner) throws Exception;
 }

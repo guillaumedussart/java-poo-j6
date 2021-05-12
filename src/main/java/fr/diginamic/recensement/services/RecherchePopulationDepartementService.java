@@ -15,7 +15,7 @@ import fr.diginamic.recensement.entites.Ville;
 public class RecherchePopulationDepartementService extends MenuService {
 
 	@Override
-	public void traiter(Recensement rec, Scanner scanner) {
+	public Throwable traiter(Recensement rec, Scanner scanner) {
 		
 		System.out.println("Quel est le code du département recherché ? ");
 		String choix = scanner.nextLine();
@@ -37,6 +37,7 @@ public class RecherchePopulationDepartementService extends MenuService {
 		else {
 			System.out.println("Département "+choix+ " non trouvé.");
 		}
-	}
+        return null;
+    }
 
 }

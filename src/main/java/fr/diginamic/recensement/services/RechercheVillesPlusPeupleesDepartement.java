@@ -19,7 +19,7 @@ import fr.diginamic.recensement.services.comparators.EnsemblePopComparateur;
 public class RechercheVillesPlusPeupleesDepartement extends MenuService {
 
 	@Override
-	public void traiter(Recensement recensement, Scanner scanner) {
+	public Throwable traiter(Recensement recensement, Scanner scanner) {
 
 		System.out.println("Veuillez saisir un numéro de département:");
 		String nomDept = scanner.nextLine();
@@ -45,7 +45,8 @@ public class RechercheVillesPlusPeupleesDepartement extends MenuService {
 				Ville ville = villesDept.get(i);
 				System.out.println(ville.getNom() + " : " + ville.getPopulation() + " habitants.");
 			}
-		} 
-	}
+		}
+        return null;
+    }
 
 }

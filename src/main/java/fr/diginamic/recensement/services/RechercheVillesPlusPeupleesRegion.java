@@ -19,7 +19,7 @@ import fr.diginamic.recensement.services.comparators.EnsemblePopComparateur;
 public class RechercheVillesPlusPeupleesRegion extends MenuService {
 
 	@Override
-	public void traiter(Recensement recensement, Scanner scanner) {
+	public Throwable traiter(Recensement recensement, Scanner scanner) {
 
 		System.out.println("Veuillez saisir un nom de région:");
 		String nomRegion = scanner.nextLine();
@@ -46,6 +46,7 @@ public class RechercheVillesPlusPeupleesRegion extends MenuService {
 			}
 		}
 
+		return null;
 	}
 
 }
