@@ -12,41 +12,43 @@ import fr.diginamic.recensement.services.comparators.EnsemblePopComparateur;
 /**
  * Cas d'utilisation: affichage des N villes les plus peuplées d'une région
  * donnée
- * 
- * @author DIGINAMIC
  *
+ * @author DIGINAMIC
  */
 public class RechercheVillesPlusPeupleesRegion extends MenuService {
 
-	@Override
-	public Throwable traiter(Recensement recensement, Scanner scanner) {
+    @Override
+    public Throwable traiter(Recensement recensement, Scanner scanner) throws Exception {
 
-		System.out.println("Veuillez saisir un nom de région:");
-		String nomRegion = scanner.nextLine();
+        System.out.println("Veuillez saisir un nom de région:");
+        String nomRegion = scanner.nextLine();
 
-		System.out.println("Veuillez saisir un nombre de villes:");
-		String nbVillesStr = scanner.nextLine();
-		int nbVilles = Integer.parseInt(nbVillesStr);
+        System.out.println("Veuillez saisir un nombre de villes:");
+        String nbVillesStr = scanner.nextLine();
+        int nbVilles = Integer.parseInt(nbVillesStr);
 
-		List<Ville> villesRegions = new ArrayList<Ville>();
+        List<Ville> villesRegions = new ArrayList<Ville>();
 
-		List<Ville> villes = recensement.getVilles();
-		for (Ville ville : villes) {
-			if (ville.getNomRegion().toLowerCase().startsWith(nomRegion.toLowerCase())) {
-				villesRegions.add(ville);
-			}
-		}
+        List<Ville> villes = recensement.getVilles();
+        for (Ville ville : villes) {
+            boolean compareVille = ville.getNomRegion().toLowerCase().startsWith(nomRegion.toLowerCase());
+            if (compareVille) {
+                villesRegions.add(ville);
+            } else {
+                throw new Exception("La ville saisie n'existe pas");
+            }
+        }
 
-		Collections.sort(villesRegions, new EnsemblePopComparateur(false));
-		System.out.println("Les " + nbVilles + " villes les plus peuplées de la région " + nomRegion + " sont :");
-		if (villesRegions.size() > 0) {
-			for (int i = 0; i < nbVilles; i++) {
-				Ville ville = villesRegions.get(i);
-				System.out.println(ville.getNom() + " : " + ville.getPopulation() + " habitants.");
-			}
-		}
+        Collections.sort(villesRegions, new EnsemblePopComparateur(false));
+        System.out.println("Les " + nbVilles + " villes les plus peuplées de la région " + nomRegion + " sont :");
+        if (villesRegions.size() > 0) {
+            for (int i = 0; i < nbVilles; i++) {
+                Ville ville = villesRegions.get(i);
+                System.out.println(ville.getNom() + " : " + ville.getPopulation() + " habitants.");
+            }
+        }
 
-		return null;
-	}
+        return null;
+    }
 
 }

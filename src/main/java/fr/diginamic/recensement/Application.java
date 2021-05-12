@@ -77,8 +77,12 @@ public class Application {
 				rechercheVillesPlusPeupleesDepartement.traiter(recensement, scanner);
 				break;
 			case 6:
-				RechercheVillesPlusPeupleesRegion rechercheVillesPlusPeupleesRegion = new RechercheVillesPlusPeupleesRegion();
-				rechercheVillesPlusPeupleesRegion.traiter(recensement, scanner);
+				try {
+					RechercheVillesPlusPeupleesRegion rechercheVillesPlusPeupleesRegion = new RechercheVillesPlusPeupleesRegion();
+					rechercheVillesPlusPeupleesRegion.traiter(recensement, scanner);
+				}catch (Exception e){
+					System.out.println(e.getMessage());
+				}
 				break;
 			case 7:
 				RechercheDepartementsPlusPeuplees rechercherDepartementsPlusPeuplees = new RechercheDepartementsPlusPeuplees();

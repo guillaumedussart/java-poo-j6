@@ -3,7 +3,7 @@ package fr.diginamic.recensement.services;
 import java.util.List;
 import java.util.Scanner;
 
-import fr.diginamic.recensement.entites.Departement;
+import fr.diginamic.exception.NotNumberException;
 import fr.diginamic.recensement.entites.Recensement;
 import fr.diginamic.recensement.entites.Ville;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -24,7 +24,7 @@ public class RecherchePopulationBorneService extends MenuService {
         String choix = scanner.nextLine();
 
         if (!NumberUtils.isDigits(choix)) {
-            throw new Exception("Vous devez entrer un nombre");
+            throw new NotNumberException("Vous devez entrer un nombre");
         }
         DepartementService dept = new DepartementService();
         boolean find = dept.listDept(rec, choix);
